@@ -52,13 +52,30 @@ For end-to-end (e2e) testing, run:
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 🎨 Adapting the design template to a New App
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+🔁 When to Update Each File:
 
-# Thanks
+| Change                            | File to Update                  |
+| --------------------------------- | ------------------------------- |
+| New brand / redesign              | DESIGN.md + styles.css          |
+| New semantic color (e.g. warning) | tailwind.config.js + styles.css |
+| New UI pattern                    | DESIGN.md                       |
+| Tailwind usage rules              | agents/tailwind.md              |
+| Process or workflow rules         | AGENTS.md                       |
+
+### 📒 Quick reference
+
+- DESIGN.md → what this app looks like.
+- styles.css → real values (colors, fonts).
+- tailwind.config.js → semantic tokens.
+- Components → use tokens, never values.
+
+---
+
+# 🙏🏻 Thanks
 
 Thanks to the authors and maintainers who shared the knowledge and resources that informed the agent setup in this template.
 

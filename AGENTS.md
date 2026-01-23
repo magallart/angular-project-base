@@ -59,6 +59,16 @@ This file acts as the **single source of truth** for global conventions and deci
   - Add ARIA roles only when necessary.
   - Ensure proper focus management and keyboard navigation.
 
+## App Design Profile (REQUIRED)
+
+- This repository includes a default `DESIGN.md` at the repo root.
+- Before creating or modifying UI, always read `DESIGN.md` and follow it:
+  - colors, typography, spacing, and component recipes.
+- When starting a new application from this template:
+  - `DESIGN.md` must be updated to match the new app’s brand identity.
+- If `DESIGN.md` conflicts with generic UI guidance, `DESIGN.md` wins for visuals.
+  - Global constraints still apply (Tailwind-only, no hex colors, etc.).
+
 ## Testing and Quality
 
 - All code must pass:

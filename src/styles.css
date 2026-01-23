@@ -1,3 +1,150 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ==========================================================================
+   Global Styles (Template)
+   --------------------------------------------------------------------------
+   This file defines DESIGN TOKENS as CSS variables.
+   Tailwind consumes these tokens via tailwind.config.js using:
+   - hsl(var(--token))
+   - var(--radius-*)
+   - var(--shadow-*)
+   - var(--font-*)
+   --------------------------------------------------------------------------
+   When cloning this template for a new app:
+   1) Update DESIGN.md (semantic usage)
+   2) Update :root values here (actual palette + typography)
+   3) Optionally tweak .dark values for dark mode
+   ========================================================================== */
+
+/* Optional: if you're using Tailwind, you'll likely have these in your main CSS:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/
+
+/* --------------------------------------------------------------------------
+   1) Fonts (names only)
+   --------------------------------------------------------------------------
+   You still need to load the fonts (via <link>, @import, or framework setup).
+   These variables only define WHICH font families Tailwind should use.
+--------------------------------------------------------------------------- */
+:root {
+  --font-sans: Inter;
+  --font-heading: Geist;
+  --font-mono: 'JetBrains Mono';
+
+  /* ------------------------------------------------------------------------
+     2) Radius tokens
+     ------------------------------------------------------------------------
+     Keep these aligned with DESIGN.md (rounded-md/lg/xl, etc.).
+  ------------------------------------------------------------------------ */
+  --radius-sm: 0.375rem; /* 6px  */
+  --radius-md: 0.5rem; /* 8px  */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+
+  /* ------------------------------------------------------------------------
+     3) Shadow tokens
+     ------------------------------------------------------------------------
+     Use subtle defaults to avoid overly "heavy" UIs in a template.
+  ------------------------------------------------------------------------ */
+  --shadow-subtle: 0 1px 2px 0 rgb(0 0 0 / 0.06), 0 1px 1px -1px rgb(0 0 0 / 0.06);
+  --shadow-medium: 0 10px 15px -3px rgb(0 0 0 / 0.12), 0 4px 6px -4px rgb(0 0 0 / 0.12);
+
+  /* ------------------------------------------------------------------------
+     4) Semantic Color Tokens (HSL triples)
+     ------------------------------------------------------------------------
+     IMPORTANT:
+     - Values are "H S L" without the hsl() wrapper.
+     - Tailwind will call: hsl(var(--token))
+     - Do NOT use hex here unless you have a strong reason.
+  ------------------------------------------------------------------------ */
+
+  /* Neutrals (Light Theme) */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+
+  --border: 214 32% 91%;
+
+  /* Brand */
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+
+  --accent: 210 40% 96%;
+  --accent-foreground: 222 47% 11%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+}
+
+/* --------------------------------------------------------------------------
+   5) Dark Theme Overrides
+   --------------------------------------------------------------------------
+   Add class "dark" to <html> or <body> to enable dark mode.
+--------------------------------------------------------------------------- */
+.dark {
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+
+  --card: 222 47% 13%;
+  --card-foreground: 210 40% 98%;
+
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+
+  --border: 217 33% 20%;
+
+  --primary: 221 83% 60%;
+  --primary-foreground: 222 47% 11%;
+
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+
+  --accent: 217 33% 17%;
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 210 40% 98%;
+}
+
+/* --------------------------------------------------------------------------
+   6) Base document styles (minimal)
+--------------------------------------------------------------------------- */
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Optional: better default focus style for non-Tailwind elements */
+:focus-visible {
+  outline: none;
+}
+
+/* Optional: reduce motion when user prefers */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

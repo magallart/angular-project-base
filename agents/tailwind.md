@@ -2,6 +2,12 @@
 
 Best practices for a clear and nice CSS.
 
+## Design Profile Integration
+
+- App-specific visual decisions (palette, typography, button/input recipes) live in `DESIGN.md`.
+- `tailwind.md` defines Tailwind usage rules;
+- `DESIGN.md` defines the app’s look & feel.
+
 ## Styling Decision Tree
 
 ```
@@ -15,6 +21,9 @@ Library can't use class?→ style prop with var() constants
 ## Critical Rules
 
 ### Never Use var() in className
+
+> Note: CSS variables are allowed in `styles.css` and `tailwind.config.js`.
+> They are forbidden inside `className` strings in components.
 
 ```typescript
 // ❌ NEVER: var() in className
