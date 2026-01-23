@@ -38,6 +38,20 @@ Library can't use class?→ style prop with var() constants
 <div className="bg-slate-800" />
 ```
 
+## Spacing Scale (REQUIRED)
+
+Use consistent spacing tokens to prevent design drift.
+
+- Tight: `gap-2 p-2 space-y-2` (8px)
+- Standard: `gap-4 p-4 space-y-4` (16px)
+- Comfortable: `gap-6 p-6 space-y-6` (24px)
+- Loose: `gap-8 p-8 space-y-8` (32px)
+- Section spacing: `py-16 sm:py-24` (64px / 96px)
+
+### Standard Rule
+
+- Prefer increments of 4 for spacing decisions (e.g. `4, 6, 8, 12, 16, 24`).
+
 ## The cn() Utility
 
 ```typescript
@@ -123,6 +137,65 @@ const CHART_COLORS = {
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" />
 ```
 
+### Grid Layouts
+
+- Auto-Responsive Grid
+
+```typescript
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {items.map(item => <Card key={item.id} {...item} />)}
+</div>
+```
+
+- Auto-Fit Grid (Dynamic Columns)
+
+```typescript
+<div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
+  {/* Automatically adjusts columns based on available space */}
+</div>
+```
+
+- Masonry-Style Grid
+
+```typescript
+<div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+  {items.map(item => (
+    <div key={item.id} className="break-inside-avoid">
+      <Card {...item} />
+    </div>
+  ))}
+</div>
+```
+
+### Button Patterns
+
+```typescript
+// Primary
+<button className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">
+  Primary
+</button>
+
+// Secondary
+<button className="bg-secondary text-secondary-foreground px-4 py-2 rounded-md hover:bg-secondary/80">
+  Secondary
+</button>
+
+// Outline
+<button className="border border-border bg-transparent px-4 py-2 rounded-md hover:bg-accent">
+  Outline
+</button>
+
+// Ghost
+<button className="bg-transparent px-4 py-2 rounded-md hover:bg-accent hover:text-accent-foreground">
+  Ghost
+</button>
+
+// Destructive
+<button className="bg-destructive text-destructive-foreground px-4 py-2 rounded-md hover:bg-destructive/90">
+  Delete
+</button>
+```
+
 ### Spacing
 
 ```typescript
@@ -169,6 +242,24 @@ const CHART_COLORS = {
 <div className="text-sm md:text-base lg:text-lg" />
 ```
 
+## Responsive Breakpoints
+
+Mobile-first approach (base styles = mobile, add larger breakpoints):
+
+| Breakpoint | Min Width | Pattern   | Example        |
+| ---------- | --------- | --------- | -------------- |
+| Base       | 0px       | No prefix | text-base      |
+| sm         | 640px     | sm:       | sm:text-lg     |
+| md         | 768px     | md:       | md:grid-cols-2 |
+| lg         | 1024px    | lg:       | lg:px-8        |
+| xl         | 1280px    | xl:       | xl:max-w-7xl   |
+| 2xl        | 1536px    | 2xl:      | 2xl:text-6xl   |
+
+```typescript
+// Mobile: 1 column, Tablet: 2 columns, Desktop: 3 columns
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+```
+
 ### Dark Mode
 
 ```typescript
@@ -208,8 +299,34 @@ Extract a component when:
 - Prefer `gap-*` over margins between siblings.
 - Avoid deep nesting of wrappers. Flatten layout where possible.
 
+## Container & Section Primitives (REQUIRED)
+
+Use these primitives for page layout consistency.
+
+### Page Container
+
+```typescript
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  {/* content */}
+</div>
+```
+
+### Container Variants
+
+- `max-w-4xl`: narrow content (docs/blog)
+- `max-w-5xl`: medium
+- `max-w-6xl`: wide
+- `max-w-7xl`: default
+
 ## Accessibility & Visual Feedback
 
 - Interactive elements must have hover and focus states.
 - Color alone must not convey meaning (use icons/text as well).
 - Disabled states must be visually distinct and non-interactive.
+
+## Anti-Patterns (AVOID)
+
+- Random spacing values that don’t follow the spacing scale.
+- Deeply nested wrappers for layout (prefer simpler structure).
+- Using `space-y-*` and `gap-*` together unless intentionally needed.
+- Overusing arbitrary values when a Tailwind class exists.
