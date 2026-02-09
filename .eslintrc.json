@@ -9,7 +9,7 @@
         "ecmaVersion": 2022,
         "sourceType": "module"
       },
-      "plugins": ["@angular-eslint", "@typescript-eslint"],
+      "plugins": ["@angular-eslint", "@typescript-eslint", "import"],
       "extends": [
         "plugin:@angular-eslint/recommended",
         "plugin:@typescript-eslint/recommended",
@@ -48,6 +48,17 @@
           "error",
           {
             "prefer": "type-imports"
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "type"],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
           }
         ]
       }
